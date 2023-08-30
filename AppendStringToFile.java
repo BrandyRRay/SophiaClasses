@@ -1,0 +1,16 @@
+import java.io.*;
+import java.nio.*;
+import java.nio.file.*;
+
+class AppendStringToFile {
+  public static void main(String[] args) {
+    File output = new File("output.append.txt");
+    try {
+      //Use both StandardOpenOption.CREATE and StandardOpenOption.APPEND so that file is created if it doesn't exist. If the file already exists, text is appended.
+      Files.writeString(output.toPath(), "Hello ya'll\n", StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+    }
+    catch(IOException ex) {
+      System.out.println("Error: " + ex.getMessage());
+    }
+  }
+}
